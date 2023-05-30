@@ -1,0 +1,39 @@
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        # print(len(cost))
+        
+        for j in range(len(cost) - 3 , -1 , -1):
+
+            print(len(cost))
+            # len(cost) = 3
+            print(j)
+            # j = len(cost) - 3
+            # j = 0 ..this allow us one iteration
+
+            print(cost)
+            # cost = [10, 15, 20]
+            print(cost[j])
+            #  cost[0] = 10
+
+
+            cost[j] += min(cost[j + 1], cost[j + 2])
+            
+            print(cost[j + 1], cost[j + 2])
+            #  cost[j + 1] = cost[0 + 1] = cost[1] = 15,
+            #  cost[j + 2] = cost[0 + 2] = cost[2] = 20
+            # cost[0] = 10
+            #  
+        return min(cost[0], cost[1])
+        #  we should take the cost of 1 and 0 cuz we climb two step , either 1 or 2 step at once
+
+
+
+
+
+
+# class Solution:
+#     def minCostClimbingStairs(self, cost: List[int]) -> int:
+#         for i in range(len(cost) - 3, -1, -1):
+#             cost[i] += min(cost[i + 1], cost[i + 2])
+
+#         return min(cost[0], cost[1])
