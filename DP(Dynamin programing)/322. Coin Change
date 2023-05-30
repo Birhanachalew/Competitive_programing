@@ -15,6 +15,60 @@ class Solution:
 
     
 
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        store = [amount + 1] * (amount + 1)
+        # store[i] = [12, 12, 12, 12, 12 ..... 12]
+        # [12] * 12
+        store[0] = 0
+        # store[i] = 12 except store[0] = 0
+        #  store[0] = 0
+        #  store[1] = 1
+        #  store[2] = 
+
+        for i in range(1, amount + 1):
+            # i : 1, 2,... 12
+            # print(amount)
+            for j in coins:
+                # j : 1,2,5
+                # print(j)
+                if i - j >= 0:
+                    # print(store[i])
+                    # print(store[j])
+                    # print(store[i - j])
+                    # store[i] = 12
+                    # store[j] = store[1], store[2], store[5] = 12
+                    store[i] = min(store[i], 1 + store[i - j])
+                    #  store[1] = min(store[1], 1 + store[12 - 12])
+                    #  store[1] = min(12, 1 + 0)
+                    #  store[1] = 1
+                    print(store[i])
+                    # print(min(store[i], 1 + store[i - j]))
+        if store[amount] != amount + 1:
+            print(store[amount])
+            return store[amount]
+        else:
+            return -1
+
+    
+
+
+
+
+
+
+       
+
+# class Solution:
+#     def coinChange(self, coins: List[int], amount: int) -> int:
+#         dp = [amount + 1] * (amount + 1)
+#         dp[0] = 0
+
+#         for a in range(1, amount + 1):
+#             for c in coins:
+#                 if a - c >= 0:
+#                     dp[a] = min(dp[a], 1 + dp[a - c])
+#         return dp[amount] if dp[amount] != amount + 1 else -1
 
 
 
